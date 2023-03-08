@@ -5,8 +5,10 @@ import plotly.graph_objects as go
 import plotly.subplots as sp
 import data_operator as do
 
-st.set_page_config(page_title='Forecasts', page_icon=':bar_chart:', layout='wide')
+theme_plotly = None # None or streamlit
+st.set_page_config(page_title='📉Forecasts📈', page_icon=':bar_chart:', layout='wide')
 st.title('📉 Forecasts Of Funnel📈')
+
 
 with open('style.css')as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
@@ -40,10 +42,10 @@ with subtab_table:
     tabela_previsoes,tot1, tot2, met_r, met_c, met_r2, met_c2, met_r3, met_c3, met_r4, met_c4 = do.tabela_previsao(df_final, filtro1, filtro2, filtro3, filtro4)
     ind1, ind2, ind3, ind4, ind5 = st.columns(5)
     ind1.metric(label="Total Monthly Revenue💲",value=tot1)
-    ind2.metric(label="Monthly Revenue - Very High💲",value=met_r)
-    ind3.metric(label="Monthly Revenue - High💲",value=met_r2)
-    ind4.metric(label="Monthly Revenue - Medium💲",value=met_r3)
-    ind5.metric(label="Monthly Revenue - Low💲",value=met_r4)
+    ind2.metric(label="Monthly Revenue - Very High🟢",value=met_r)
+    ind3.metric(label="Monthly Revenue - High🔵",value=met_r2)
+    ind4.metric(label="Monthly Revenue - Medium🟡",value=met_r3)
+    ind5.metric(label="Monthly Revenue - Low🔴",value=met_r4)
     ind6, ind7, ind8, ind9, ind10 = st.columns(5)
     ind6.metric(label="Total Prospects🪪",value=tot2)
     ind7.metric(label="Prospects - Very High🟢",value=met_c)

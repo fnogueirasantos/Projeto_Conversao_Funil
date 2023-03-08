@@ -5,7 +5,7 @@ theme_plotly = None # None or streamlit
 
 df, df_inicial = do.carga_dados()
 
-st.set_page_config(page_title='Exploring Data', page_icon=':bar_chart:', layout='wide')
+st.set_page_config(page_title='📊Exploring Data', page_icon=':bar_chart:', layout='wide')
 st.title('📊 Exploratory Data Analytics')
 
 with open('style.css')as f:

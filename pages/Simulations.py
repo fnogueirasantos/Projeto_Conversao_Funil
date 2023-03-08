@@ -6,7 +6,8 @@ import plotly.subplots as sp
 import data_operator as do
 import time
 
-st.set_page_config(page_title='Simulations', page_icon=':bar_chart:', layout='wide')
+theme_plotly = None # None or streamlit
+st.set_page_config(page_title='💡Simulations', layout='wide')
 st.title('💡 Simulations')
 
 with open('style.css')as f:
