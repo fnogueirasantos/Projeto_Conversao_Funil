@@ -1,10 +1,6 @@
 import streamlit as st
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join('modulos')))
-from data_operator import *
+import modulos.data_operator as do
 import warnings
-import sys, os
 warnings.filterwarnings("ignore")
 
 # Configuracao Pagina principal
@@ -22,7 +18,7 @@ t2.markdown("**Github:** https://github.com/fnogueirasanto **| Linkedin:** https
 
 subtab_table = st.tabs(['***'])
 
-df, df_inicial = carga_dados()
+df, df_inicial = do.carga_dados()
 
 idioma = st.radio(
     "Idioma de introdução / Introduction Language:",
