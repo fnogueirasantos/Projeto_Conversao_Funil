@@ -10,7 +10,6 @@ from sklearn.preprocessing import LabelEncoder
 import plotly.graph_objects as go
 import plotly.express as px
 import locale
-locale.setlocale(locale.LC_MONETARY, 'pt_BR.UTF-8')
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -137,19 +136,19 @@ def tabela_previsao(df, filtro1, filtro2, filtro3, filtro4):
 		   title_x=0,margin= dict(l=0,r=10,b=10,t=30), height=480)
 	
 	met = df.copy()
-	tot1 = locale.currency(round(met['Monthly_Revenue'].sum(),2))
+	tot1 = "R${:,.2f}".format(round(met['Monthly_Revenue'].sum(),2)).replace(",", "X").replace(".", ",").replace("X", ".")
 	tot2 = met['Monthly_Revenue'].count()
 	met2 = df.query('Indicator_Close == "Very High"')
-	met_r = locale.currency(round(met2['Monthly_Revenue'].sum(),2))
+	met_r = "R${:,.2f}".format(round(met2['Monthly_Revenue'].sum(),2)).replace(",", "X").replace(".", ",").replace("X", ".")
 	met_c = met2['Monthly_Revenue'].count()
 	met3 = df.query('Indicator_Close == "High"')
-	met_r2 = locale.currency(round(met3['Monthly_Revenue'].sum(),2))
+	met_r2 = "R${:,.2f}".format(round(met3['Monthly_Revenue'].sum(),2)).replace(",", "X").replace(".", ",").replace("X", ".")
 	met_c2 = met3['Monthly_Revenue'].count()
 	met4 = df.query('Indicator_Close == "Medium"')
-	met_r3 = locale.currency(round(met4['Monthly_Revenue'].sum(),2))
+	met_r3 = "R${:,.2f}".format(round(met4['Monthly_Revenue'].sum(),2)).replace(",", "X").replace(".", ",").replace("X", ".")
 	met_c3 = met4['Monthly_Revenue'].count()
 	met5 = df.query('Indicator_Close == "Low"')
-	met_r4 = locale.currency(round(met5['Monthly_Revenue'].sum(),2))
+	met_r4 = "R${:,.2f}".format(round(met5['Monthly_Revenue'].sum(),2)).replace(",", "X").replace(".", ",").replace("X", ".")
 	met_c4 = met5['Monthly_Revenue'].count()
 	
 	return(fig, tot1, tot2, met_r, met_c, met_r2, met_c2, met_r3, met_c3, met_r4, met_c4)
