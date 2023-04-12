@@ -1,5 +1,5 @@
 import streamlit as st
-import modulos.data_operator as do
+import data
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -18,7 +18,7 @@ t2.markdown("**Github:** https://github.com/fnogueirasanto **| Linkedin:** https
 
 subtab_table = st.tabs(['***'])
 
-df, df_inicial = do.carga_dados()
+df, df_inicial = data.carga_dados()
 
 idioma = st.radio(
     "Idioma de introdução / Introduction Language:",

@@ -1,5 +1,5 @@
 import streamlit as st
-import modulos.data_operator as do
+import data as do
 
 theme_plotly = None # None or streamlit
 

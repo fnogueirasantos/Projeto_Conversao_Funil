@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.subplots as sp
-import modulos.data_operator as do
+import data as do
 import time
 
 theme_plotly = None # None or streamlit

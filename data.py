@@ -11,7 +11,6 @@ import plotly.graph_objects as go
 import plotly.express as px
 import locale
 locale.setlocale(locale.LC_MONETARY, 'pt_BR.UTF-8')
-
 import warnings
 warnings.filterwarnings("ignore")
 
