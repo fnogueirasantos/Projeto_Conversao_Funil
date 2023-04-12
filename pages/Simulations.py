@@ -3,7 +3,10 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.subplots as sp
-import modulos.data_operator as do
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join('modulos')))
+from data_operator import *
 import time
 
 theme_plotly = None # None or streamlit
@@ -48,13 +51,13 @@ a2, a3 = st.tabs(['****', '****'])
 
 if st.button('FORECAST'):
     time.sleep(1)
-    df, df_inicial = do.carga_dados()
+    df, df_inicial = carga_dados()
     df = pd.concat([df, nv_dados_input])
     df_inicial = pd.concat([df_inicial, nv_dados_input])
-    df_previsoes = do.novas_previsoes(df)
-    df_final = do.concatena_formata(df_inicial,df_previsoes)
+    df_previsoes = novas_previsoes(df)
+    df_final = concatena_formata(df_inicial,df_previsoes)
     df_final = df_final.query('Id_Business == "SIMULATION"')
-    df_final = do.formata_simulacoes(df_final)
+    df_final = formata_simulacoes(df_final)
     ind1, ind2, ind3, ind4 = st.columns(4)
     ind4, ind5, ind6, ind7 = st.columns(4)
     i_won = str(df_final['Prob_Won'].sum()).replace('.',',') + '%'
@@ -65,7 +68,7 @@ if st.button('FORECAST'):
     ind2.metric(label="INDICATOR OF CLOSED📶",value=indic)
     indic2 = 'R$ ' + str(round(df_final['Monthly_Revenue'].sum(),2)).replace('.',',')
     ind3.metric(label="MONTHLY REVENUE💵",value=indic2)
-    fig = do.grafico_simulations(df_final)
+    fig = grafico_simulations(df_final)
     ind1.plotly_chart(fig, use_container_width=True)
 
 else:

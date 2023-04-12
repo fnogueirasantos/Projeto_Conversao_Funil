@@ -3,7 +3,10 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.subplots as sp
-import modulos.data_operator as do
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join('modulos')))
+from data_operator import *
 
 theme_plotly = None # None or streamlit
 st.set_page_config(page_title='📉Forecasts📈', page_icon=':bar_chart:', layout='wide')
@@ -14,11 +17,11 @@ with open('style.css')as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
 subtab_chart, subtab_table = st.tabs(['**Charts Forecasts**', '**Table / Indicators**'])
-df, df_inicial = do.carga_dados()
+df, df_inicial = carga_dados()
 
-df_previsoes = do.novas_previsoes(df)
-df_final = do.concatena_formata(df_inicial,df_previsoes)
-df_final = do.formata_previsoes(df_final)
+df_previsoes = novas_previsoes(df)
+df_final = concatena_formata(df_inicial,df_previsoes)
+df_final = formata_previsoes(df_final)
 
 with subtab_table:
     fi1, fi2, fi3, fi4 = st.columns(4)
@@ -39,7 +42,7 @@ with subtab_table:
         ('All', 'prosp_merketing', 'Evento', 'google', 'indicacao'))
 
     # Tabela analitica
-    tabela_previsoes,tot1, tot2, met_r, met_c, met_r2, met_c2, met_r3, met_c3, met_r4, met_c4 = do.tabela_previsao(df_final, filtro1, filtro2, filtro3, filtro4)
+    tabela_previsoes,tot1, tot2, met_r, met_c, met_r2, met_c2, met_r3, met_c3, met_r4, met_c4 = tabela_previsao(df_final, filtro1, filtro2, filtro3, filtro4)
     ind1, ind2, ind3, ind4, ind5 = st.columns(5)
     ind1.metric(label="Total Monthly Revenue💲",value=tot1)
     ind2.metric(label="Monthly Revenue - Very High🟢",value=met_r)
@@ -68,7 +71,7 @@ with subtab_chart:
     if options == []:
         st.warning('You need to select at least one variable of the indicator close', icon="⚠️")
     else:
-        fig1, fig2= do.analise_preditiva(df_final, variavel, options, options)
+        fig1, fig2= analise_preditiva(df_final, variavel, options, options)
         a1, a2 = st.columns(2)
         a1.plotly_chart(fig1,use_container_width=True)
         a2.plotly_chart(fig2,use_container_width=True)

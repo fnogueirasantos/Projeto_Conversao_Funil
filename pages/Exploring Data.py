@@ -1,9 +1,12 @@
 import streamlit as st
-import modulos.data_operator as do
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join('modulos')))
+from data_operator import *
 
 theme_plotly = None # None or streamlit
 
-df, df_inicial = do.carga_dados()
+df, df_inicial = carga_dados()
 
 st.set_page_config(page_title='📊Exploring Data', page_icon=':bar_chart:', layout='wide')
 st.title('📊 Exploratory Data Analytics')
@@ -17,7 +20,7 @@ variavel = f1.selectbox(
     ('Sales_Owner', 'Segment','Tax_Regime','Campaign'))
 
 
-fig1, fig2, fig3, fig4, fig5 = do.analise_exploratoria(df, variavel)
+fig1, fig2, fig3, fig4, fig5 = analise_exploratoria(df, variavel)
 
 st.plotly_chart(fig4,use_container_width=True)
 a1, a2 = st.columns(2)
