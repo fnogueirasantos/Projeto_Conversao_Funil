@@ -58,7 +58,7 @@ with subtab_chart:
     f1, f2, f3= st.columns(3)
     variavel = f1.selectbox(
         "What variable do you want explorating?",
-        ('Sales_Owner', 'Segment','Tax_Regime','Campaign','Company_Size'))
+        ('Sales_Owner', 'Segment','Tax_Regime','Campaign'))
     
     options = f2.multiselect(
     'What indicator of closeing sales do you want?',

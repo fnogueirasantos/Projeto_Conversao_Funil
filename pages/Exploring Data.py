@@ -14,7 +14,7 @@ with open('style.css')as f:
 f1, f2, f3, f4, f5 = st.columns(5)
 variavel = f1.selectbox(
     "What variable do you want explorating?",
-    ('Sales_Owner', 'Segment','Tax_Regime','Campaign','Company_Size'))
+    ('Sales_Owner', 'Segment','Tax_Regime','Campaign'))
 
 
 fig1, fig2, fig3, fig4, fig5 = do.analise_exploratoria(df, variavel)

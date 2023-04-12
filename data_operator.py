@@ -412,8 +412,10 @@ def grafico_simulations(df):
 	dfprob_lost.rename(columns={'Prob_Lost': 'Probability'}, inplace=True)
 	dfprob_lost['Label'] = 'Lost'
 	df_final = pd.concat([dfprob_won, dfprob_lost])
+	cores = ['#0c7a1e','#bf0f24']
 	fig = go.Figure([go.Pie(labels = df_final['Label'], 
 			values = df_final['Probability'], hole = 0.3,
+			marker=dict(colors=cores)
 			#color_discrete_sequence=px.colors.sequential.RdBu
 				)])
 
