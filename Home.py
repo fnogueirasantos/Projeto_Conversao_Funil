@@ -1,5 +1,5 @@
 import streamlit as st
-import data_operator as do
+import modulos.data_operator as do
 import warnings
 warnings.filterwarnings("ignore")
 

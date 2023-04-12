@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.subplots as sp
-import data_operator as do
+import modulos.data_operator as do
 
 theme_plotly = None # None or streamlit
 st.set_page_config(page_title='📉Forecasts📈', page_icon=':bar_chart:', layout='wide')
