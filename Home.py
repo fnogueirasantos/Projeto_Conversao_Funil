@@ -14,7 +14,7 @@ with open('style.css')as f:
 t1, t2,t3 = st.columns((0.07,3.5,1)) 
 
 t2.title("Web APP - Analysis of Sales Funnel and New Predictions")
-t2.markdown("**Portfólio:** https://portfolio-production-c44b.up.railway.app/ **| Linkedin:** https://www.linkedin.com/in/felipenogueira92")
+#t2.markdown("**Portfólio:** https://portfolio-production-c44b.up.railway.app/ **| Linkedin:** https://www.linkedin.com/in/felipenogueira92")
 
 subtab_table = st.tabs(['***'])
 
